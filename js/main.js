@@ -1,5 +1,5 @@
 /* ============================================================
-   КРИС МАЗУР — портфолио
+   DaniiKodit — портфолио
    i18n, дизеринг-canvas, анимации
    ============================================================ */
 
@@ -9,37 +9,40 @@
 
 const I18N = {
   ru: {
-    'meta.title': 'Крис Мазур — сайты под ключ',
+    'meta.title': 'DaniiKodit · сайты и Telegram-боты',
+    'meta.titlePf': 'DaniiKodit · портфолио',
+    'nav.home': 'Главная',
     'nav.about': 'Обо мне',
     'nav.works': 'Работы',
     'nav.services': 'Услуги',
     'nav.contact': 'Контакты',
     'nav.cta': 'Связаться',
 
-    'hero.eyebrow': '// портфолио веб-разработчика',
+    'hero.eyebrow': '// портфолио: сайты и telegram-боты',
     'hero.title1': 'Большие идеи',
     'hero.title2': 'начинаются с пикселя.',
-    'hero.sub': 'Проектирую и верстаю лендинги под ключ — быстрые, аккуратные и заточенные под конверсию.',
+    'hero.sub': 'Проектирую и верстаю лендинги под ключ, пишу Telegram-ботов. Быстро, аккуратно и с прицелом на конверсию.',
     'hero.cta1': 'Обсудить проект ↗',
     'hero.cta2': 'Смотреть работы',
 
-    'stats.s1': 'PageSpeed на мобильных',
-    'stats.s2': 'дней — средний срок',
+    'stats.s1': 'на связи, отвечаю быстро',
+    'stats.s2': 'направления: сайты и TG-боты',
     'stats.s3': 'под ключ: от идеи до деплоя',
 
-    'marquee': 'Лендинги под ключ ✦ Вёрстка ✦ Дизайн ✦ Анимации ✦ Деплой ✦ Поддержка ✦ ',
+    'marquee': 'Лендинги под ключ ✦ Telegram-боты ✦ Вёрстка ✦ Дизайн ✦ Анимации ✦ Деплой ✦ Поддержка ✦ ',
 
     'about.label': '01 · Обо мне',
     'about.title': 'Дизайн, который работает',
     'about.a1t': 'Эстетика × функция',
-    'about.a1d': 'Быстрые адаптивные лендинги, где дизайн работает на задачу, а не против неё. Ничего лишнего — каждый блок ведёт к цели.',
+    'about.a1d': 'Быстрые адаптивные лендинги, где дизайн работает на задачу, а не против неё. Ничего лишнего: каждый блок ведёт к цели.',
     'about.a2t': 'Современный стек',
-    'about.a2d': 'HTML5, Tailwind CSS, Alpine.js, ванильный JavaScript. Без тяжёлых фреймворков — страницы открываются мгновенно.',
+    'about.a2d': 'Сайты: HTML5, Tailwind CSS, JavaScript. Боты: Python. Без тяжёлых фреймворков, страницы открываются мгновенно.',
     'about.a3t': 'Результат для бизнеса',
-    'about.a3d': 'Целюсь в высокую конверсию и PageSpeed 90+, а не в награды за красоту. Сайт — это инструмент, и он должен продавать.',
+    'about.a3d': 'Целюсь в высокую конверсию и PageSpeed 90+, а не в награды за красоту. Сайт обязан приносить заявки, бот — экономить часы рутины.',
 
     'works.label': '02 · Работы',
     'works.title': 'Избранные проекты',
+    'works.all': 'Всё портфолио ↗',
     'works.w1t': 'Бьюти-салон «ВДОХ»',
     'works.w1d': 'Многостраничный лендинг с AI-генерацией изображений: услуги, мастера, онлайн-запись.',
     'works.w1tag1': 'лендинг',
@@ -57,13 +60,16 @@ const I18N = {
     'services.r2t': 'Многостраничный сайт',
     'services.r2d': 'до пяти страниц, единая дизайн-система',
     'services.r2p': 'от 9 000 ₽',
-    'services.r3t': 'Консультация',
-    'services.r3d': 'разбор задачи, советы по структуре и текстам',
-    'services.r3p': 'бесплатно',
+    'services.r3t': 'Telegram-бот',
+    'services.r3d': 'бот под вашу задачу: заявки, автоответы, интеграции',
+    'services.r3p': 'цена по задаче',
+    'services.r4t': 'Консультация',
+    'services.r4d': 'разбор задачи, советы по структуре и текстам',
+    'services.r4p': 'бесплатно',
 
     'contact.label': '04 · Контакт',
     'contact.title': 'Есть задача? Обсудим.',
-    'contact.sub': 'Опишите проект в двух словах — отвечу в течение дня.',
+    'contact.sub': 'Опишите проект в двух словах, отвечу в течение дня.',
     'contact.or': '// или напрямую',
     'form.name': 'Имя',
     'form.nameph': 'Как к вам обращаться',
@@ -75,43 +81,72 @@ const I18N = {
     'form.empty': '> заполните все поля',
     'form.ok': '> открываю почтовый клиент…',
 
-    'footer.rights': '© 2026 Крис Мазур · сайты под ключ',
+    'pf.label': 'Портфолио',
+    'pf.title': 'Все проекты',
+    'pf.sub': 'Сайты и Telegram-боты: что уже сделано и как это работает.',
+    'pf.done': 'что сделано:',
+    'pf.p1m': '2026 · лендинг',
+    'pf.p1t': 'Бьюти-салон «ВДОХ»',
+    'pf.p1d': 'Многостраничный лендинг для салона красоты: услуги, мастера, онлайн-запись. Изображения сгенерированы нейросетью под фирменный стиль.',
+    'pf.p1i1': 'структура и тексты под запись клиентов',
+    'pf.p1i2': 'адаптивная вёрстка и анимации',
+    'pf.p1i3': 'AI-генерация изображений в стиле салона',
+    'pf.p2m': '2026 · витрина',
+    'pf.p2t': 'Витрина продукта «Зерно»',
+    'pf.p2d': 'Продуктовая витрина для локального бренда: каталог с карточками, история производства, карта точек продаж.',
+    'pf.p2i1': 'каталог с карточками продукта',
+    'pf.p2i2': 'страница истории бренда',
+    'pf.p2i3': 'карта точек продаж',
+    'pf.p3m': '2026 · telegram-бот',
+    'pf.p3t': 'Бот приёма заявок',
+    'pf.p3d': 'Telegram-бот, который собирает заявки через анкету и мгновенно отправляет их менеджеру: без потерянных клиентов и ручного копирования.',
+    'pf.p3i1': 'сценарий анкеты и проверка ответов',
+    'pf.p3i2': 'уведомления менеджеру в чат',
+    'pf.p3i3': 'выгрузка заявок в таблицу',
+    'pf.p4t': 'Здесь может быть ваш проект',
+    'pf.p4d': 'Опишите задачу: соберу прототип, посчитаю сроки и стоимость.',
+    'pf.p4btn': 'Обсудить ↗',
+
+    'footer.rights': '© 2026 DaniiKodit · сайты и боты под ключ',
     'footer.made': 'сделано руками, без конструкторов',
     'footer.top': 'наверх ↑',
   },
 
   en: {
-    'meta.title': 'Kris Mazur — turnkey websites',
+    'meta.title': 'DaniiKodit · websites & Telegram bots',
+    'meta.titlePf': 'DaniiKodit · portfolio',
+    'nav.home': 'Home',
     'nav.about': 'About',
     'nav.works': 'Works',
     'nav.services': 'Services',
     'nav.contact': 'Contact',
     'nav.cta': 'Get in touch',
 
-    'hero.eyebrow': '// web developer portfolio',
+    'hero.eyebrow': '// portfolio: websites & telegram bots',
     'hero.title1': 'Big ideas',
     'hero.title2': 'start with a pixel.',
-    'hero.sub': 'I design and build turnkey landing pages — fast, precise and conversion-driven.',
+    'hero.sub': 'I build turnkey landing pages and Telegram bots. Fast, precise and conversion-driven.',
     'hero.cta1': 'Discuss a project ↗',
     'hero.cta2': 'View works',
 
-    'stats.s1': 'PageSpeed on mobile',
-    'stats.s2': 'days — average delivery',
+    'stats.s1': 'reachable, quick replies',
+    'stats.s2': 'tracks: websites and TG bots',
     'stats.s3': 'turnkey: from idea to deploy',
 
-    'marquee': 'Turnkey landing pages ✦ Markup ✦ Design ✦ Animation ✦ Deploy ✦ Support ✦ ',
+    'marquee': 'Turnkey landing pages ✦ Telegram bots ✦ Markup ✦ Design ✦ Animation ✦ Deploy ✦ Support ✦ ',
 
     'about.label': '01 · About',
     'about.title': 'Design that works',
     'about.a1t': 'Aesthetics × function',
-    'about.a1d': 'Fast responsive landing pages where design serves the goal, not fights it. Nothing extra — every block leads somewhere.',
+    'about.a1d': 'Fast responsive landing pages where design serves the goal, not fights it. Nothing extra: every block leads somewhere.',
     'about.a2t': 'Modern stack',
-    'about.a2d': 'HTML5, Tailwind CSS, Alpine.js, vanilla JavaScript. No heavy frameworks — pages open instantly.',
+    'about.a2d': 'Websites: HTML5, Tailwind CSS, JavaScript. Bots: Python. No heavy frameworks, pages open instantly.',
     'about.a3t': 'Business results',
-    'about.a3d': 'I aim for high conversion and PageSpeed 90+, not beauty awards. A website is a tool — it has to sell.',
+    'about.a3d': 'I aim for high conversion and PageSpeed 90+, not beauty awards. A website must bring leads, a bot must save hours of routine.',
 
     'works.label': '02 · Works',
     'works.title': 'Selected projects',
+    'works.all': 'Full portfolio ↗',
     'works.w1t': 'Beauty salon “VDOKH”',
     'works.w1d': 'Multi-page landing with AI-generated imagery: services, staff, online booking.',
     'works.w1tag1': 'landing',
@@ -129,13 +164,16 @@ const I18N = {
     'services.r2t': 'Multi-page website',
     'services.r2d': 'up to five pages, one design system',
     'services.r2p': 'from 9 000 ₽',
-    'services.r3t': 'Consultation',
-    'services.r3d': 'project review, advice on structure and copy',
-    'services.r3p': 'free',
+    'services.r3t': 'Telegram bot',
+    'services.r3d': 'a bot for your task: leads, auto-replies, integrations',
+    'services.r3p': 'depends on task',
+    'services.r4t': 'Consultation',
+    'services.r4d': 'project review, advice on structure and copy',
+    'services.r4p': 'free',
 
     'contact.label': '04 · Contact',
     'contact.title': 'Got a project? Let’s talk.',
-    'contact.sub': 'Describe it in a couple of sentences — I reply within a day.',
+    'contact.sub': 'Describe it in a couple of sentences, I reply within a day.',
     'contact.or': '// or directly',
     'form.name': 'Name',
     'form.nameph': 'What should I call you',
@@ -147,11 +185,39 @@ const I18N = {
     'form.empty': '> please fill in all fields',
     'form.ok': '> opening your mail client…',
 
-    'footer.rights': '© 2026 Kris Mazur · turnkey websites',
+    'pf.label': 'Portfolio',
+    'pf.title': 'All projects',
+    'pf.sub': 'Websites and Telegram bots: what is already shipped and how it works.',
+    'pf.done': 'what was done:',
+    'pf.p1m': '2026 · landing',
+    'pf.p1t': 'Beauty salon “VDOKH”',
+    'pf.p1d': 'Multi-page landing for a beauty salon: services, staff, online booking. Imagery generated by AI to match the brand style.',
+    'pf.p1i1': 'structure and copy built for bookings',
+    'pf.p1i2': 'responsive markup and animations',
+    'pf.p1i3': 'AI imagery in the salon’s style',
+    'pf.p2m': '2026 · showcase',
+    'pf.p2t': 'Product showcase “Zerno”',
+    'pf.p2d': 'Product vitrine for a local brand: catalogue with product cards, brand story, points-of-sale map.',
+    'pf.p2i1': 'catalogue with product cards',
+    'pf.p2i2': 'brand story page',
+    'pf.p2i3': 'points-of-sale map',
+    'pf.p3m': '2026 · telegram bot',
+    'pf.p3t': 'Lead intake bot',
+    'pf.p3d': 'A Telegram bot that collects leads through a guided form and instantly forwards them to the manager: no lost clients, no manual copying.',
+    'pf.p3i1': 'guided form flow with validation',
+    'pf.p3i2': 'instant manager notifications',
+    'pf.p3i3': 'lead export to a spreadsheet',
+    'pf.p4t': 'Your project could be here',
+    'pf.p4d': 'Describe the task: I will build a prototype and estimate time and cost.',
+    'pf.p4btn': 'Discuss ↗',
+
+    'footer.rights': '© 2026 DaniiKodit · websites & bots',
     'footer.made': 'built by hand, no site builders',
     'footer.top': 'back to top ↑',
   },
 };
+
+const CONTACT_EMAIL = 'd82208962@gmail.com';
 
 let currentLang = localStorage.getItem('lang') || 'ru';
 
@@ -163,7 +229,7 @@ function setLang(lang, animate) {
   currentLang = I18N[lang] ? lang : 'ru';
   localStorage.setItem('lang', currentLang);
   document.documentElement.lang = currentLang;
-  document.title = t('meta.title');
+  document.title = t(document.body.dataset.titleKey || 'meta.title');
 
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     el.textContent = t(el.dataset.i18n);
@@ -179,13 +245,10 @@ function setLang(lang, animate) {
     btn.classList.toggle('active', btn.dataset.lang === currentLang);
   });
 
-  if (animate) {
-    scramble(document.getElementById('hero-line-1'), t('hero.title1'));
-    scramble(document.getElementById('hero-line-2'), t('hero.title2'));
-  }
+  if (animate) scrambleAll();
 }
 
-/* ---------- эффект «дешифровки» заголовка ---------- */
+/* ---------- эффект «дешифровки» заголовков ---------- */
 
 const GLYPHS = '▓▒░█#<>/\\*+=~';
 
@@ -217,6 +280,12 @@ function scramble(el, finalText) {
   }, 30);
 }
 
+function scrambleAll() {
+  document.querySelectorAll('.js-scramble').forEach((el) => {
+    scramble(el, t(el.dataset.i18n));
+  });
+}
+
 /* ---------- дизеринг: общее ---------- */
 
 const BAYER8 = [
@@ -235,7 +304,7 @@ const C_DIM = [70, 70, 78];
 const C_INK = [232, 230, 224];
 const C_ACC = [198, 242, 78];
 
-/* ---------- живой дизеринг-фон в hero ---------- */
+/* ---------- цикличная пиксельная волна в hero ---------- */
 
 function initHeroDither() {
   const canvas = document.getElementById('dither-hero');
@@ -245,8 +314,7 @@ function initHeroDither() {
 
   const CELL = 5;              // размер «пикселя» в css-px
   let W = 0, H = 0, img = null;
-  let rowWave = null, diagWave = null, edgeY = null;
-  let mouseX = 0.82, mouseY = 0.18;
+  let rowA = null, rowB = null, edgeY = null;
 
   function resize() {
     const rect = canvas.parentElement.getBoundingClientRect();
@@ -255,16 +323,15 @@ function initHeroDither() {
     canvas.width = W;
     canvas.height = H;
     img = ctx.createImageData(W, H);
-    rowWave = new Float32Array(H);
-    diagWave = new Float32Array(W + H);
+    rowA = new Float32Array(H);
+    rowB = new Float32Array(H);
     edgeY = new Float32Array(H);
+    // смена размера очищает canvas — сразу рисуем кадр, не дожидаясь rAF
+    // (у скрытой вкладки rAF заморожен, и фон остался бы пустым)
+    render(performance.now());
   }
 
   new ResizeObserver(resize).observe(canvas.parentElement);
-  window.addEventListener('pointermove', (e) => {
-    mouseX = e.clientX / window.innerWidth;
-    mouseY = e.clientY / window.innerHeight;
-  });
   resize();
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -291,42 +358,31 @@ function initHeroDither() {
   }
 
   function render(now) {
-    const T = now * 0.00035;
+    const phase = now * 0.0011;
     const data = img.data;
-    const cx = W * (0.1 + mouseX * 0.8);
-    const cy = H * (0.1 + mouseY * 0.8);
-    const blobR2 = (W * 0.11) * (W * 0.11);
 
-    // предвычисляем всё, что не зависит от x: волну ряда,
-    // диагональную волну и вертикальную часть виньетки
+    // фазы двух встречных волн зависят только от ряда — считаем заранее
     for (let y = 0; y < H; y++) {
-      rowWave[y] = Math.sin(y * 0.05 - T * 2);
+      rowA[y] = y * 0.03 + phase * 2;
+      rowB[y] = 1.7 - y * 0.052 - phase * 3;
       const dy = (y - H / 2) / H;
       edgeY[y] = dy * dy;
-    }
-    for (let d = 0; d < W + H; d++) {
-      diagWave[d] = 0.22 * Math.sin(d * 0.035 - T * 4);
     }
 
     for (let y = 0; y < H; y++) {
       const bayerRow = BAYER8[y & 7];
-      const rw = rowWave[y];
+      const a = rowA[y];
+      const b = rowB[y];
       const ey = edgeY[y];
-      const mdy2 = (y - cy) * (y - cy);
 
       for (let x = 0; x < W; x++) {
-        // плазма из двух волн
-        let v = 0.5 + 0.28 * Math.sin(x * 0.055 + T * 3 + rw) + diagWave[x + y];
+        // две встречные синусоиды дают бесконечную пиксельную рябь
+        let v = 0.5 + 0.32 * Math.sin(x * 0.045 + a) + 0.2 * Math.sin(x * 0.021 + b);
 
         // затемнение к центру, чтобы читался текст
         const dx = (x - W / 2) / W;
         const edge = Math.min(1, (dx * dx + ey) * 5.76);
         v *= 0.12 + 0.88 * edge;
-
-        // светлое пятно у курсора
-        const mdx = x - cx;
-        const md2 = mdx * mdx + mdy2;
-        if (md2 < blobR2) v += (1 - Math.sqrt(md2 / blobR2)) * 0.35;
 
         const i = (y * W + x) * 4;
         if (v * 64 > bayerRow[x & 7]) {
@@ -348,7 +404,6 @@ function initHeroDither() {
 
   document.addEventListener('visibilitychange', schedule);
 
-  render(performance.now());
   schedule();
 }
 
@@ -452,10 +507,10 @@ function initForm() {
       return;
     }
 
-    const subject = encodeURIComponent(`Заявка с сайта — ${name}`);
+    const subject = encodeURIComponent(`Заявка с сайта: ${name}`);
     const body = encodeURIComponent(`Имя: ${name}\nКонтакт: ${contact}\n\n${message}`);
     status.textContent = t('form.ok');
-    window.location.href = `mailto:hello@krismazur.ru?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   });
 }
 
@@ -476,9 +531,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initBurger();
   initForm();
 
-  // «дешифровка» заголовка при загрузке
-  setTimeout(() => {
-    scramble(document.getElementById('hero-line-1'), t('hero.title1'));
-    scramble(document.getElementById('hero-line-2'), t('hero.title2'));
-  }, 250);
+  // «дешифровка» заголовков при загрузке
+  setTimeout(scrambleAll, 250);
 });

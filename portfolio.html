@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DaniiKodit · портфолио</title>
+  <meta name="description" content="Подробное портфолио DaniiKodit: лендинги, витрины и Telegram-боты с описанием задач и решений.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230b0b0d'/><rect x='3' y='3' width='4' height='4' fill='%23c6f24e'/><rect x='9' y='9' width='4' height='4' fill='%23e8e6e0'/></svg>">
+</head>
+<body data-title-key="meta.titlePf">
+
+  <!-- ===== шапка ===== -->
+  <header class="site-header">
+    <a class="logo" href="index.html">DK<sup>®</sup></a>
+
+    <nav class="site-nav" id="site-nav">
+      <a href="index.html"          data-i18n="nav.home">Главная</a>
+      <a href="index.html#about"    data-i18n="nav.about">Обо мне</a>
+      <a href="index.html#services" data-i18n="nav.services">Услуги</a>
+      <a href="index.html#contact"  data-i18n="nav.contact">Контакты</a>
+    </nav>
+
+    <div class="header-right">
+      <div class="lang-switch" role="group" aria-label="Язык">
+        <button type="button" data-lang="ru" class="active">RU</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a class="btn btn-solid btn-small" href="index.html#contact" data-i18n="nav.cta">Связаться</a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== заголовок страницы ===== -->
+    <section class="section section-first">
+      <div class="section-head reveal">
+        <span class="section-label mono" data-i18n="pf.label">Портфолио</span>
+        <h1 class="section-title js-scramble" data-i18n="pf.title">Все проекты</h1>
+        <p class="section-sub" data-i18n="pf.sub">Сайты и Telegram-боты: что уже сделано и как это работает.</p>
+      </div>
+
+      <!-- проект 1 -->
+      <article class="pf-item reveal">
+        <div class="work-media">
+          <canvas class="work-canvas" data-seed="7" aria-hidden="true"></canvas>
+          <span class="work-num mono">01</span>
+        </div>
+        <div class="pf-body">
+          <p class="pf-meta mono" data-i18n="pf.p1m">2026 · лендинг</p>
+          <h3 data-i18n="pf.p1t">Бьюти-салон «ВДОХ»</h3>
+          <p class="pf-desc" data-i18n="pf.p1d">Многостраничный лендинг для салона красоты: услуги, мастера, онлайн-запись. Изображения сгенерированы нейросетью под фирменный стиль.</p>
+          <p class="pf-done mono" data-i18n="pf.done">что сделано:</p>
+          <ul class="pf-points">
+            <li data-i18n="pf.p1i1">структура и тексты под запись клиентов</li>
+            <li data-i18n="pf.p1i2">адаптивная вёрстка и анимации</li>
+            <li data-i18n="pf.p1i3">AI-генерация изображений в стиле салона</li>
+          </ul>
+          <div class="tags mono">
+            <span>HTML5</span>
+            <span>Tailwind CSS</span>
+            <span>Alpine.js</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- проект 2 -->
+      <article class="pf-item reveal">
+        <div class="work-media">
+          <canvas class="work-canvas" data-seed="23" aria-hidden="true"></canvas>
+          <span class="work-num mono">02</span>
+        </div>
+        <div class="pf-body">
+          <p class="pf-meta mono" data-i18n="pf.p2m">2026 · витрина</p>
+          <h3 data-i18n="pf.p2t">Витрина продукта «Зерно»</h3>
+          <p class="pf-desc" data-i18n="pf.p2d">Продуктовая витрина для локального бренда: каталог с карточками, история производства, карта точек продаж.</p>
+          <p class="pf-done mono" data-i18n="pf.done">что сделано:</p>
+          <ul class="pf-points">
+            <li data-i18n="pf.p2i1">каталог с карточками продукта</li>
+            <li data-i18n="pf.p2i2">страница истории бренда</li>
+            <li data-i18n="pf.p2i3">карта точек продаж</li>
+          </ul>
+          <div class="tags mono">
+            <span>HTML5</span>
+            <span>Tailwind CSS</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- проект 3 -->
+      <article class="pf-item reveal">
+        <div class="work-media">
+          <canvas class="work-canvas" data-seed="41" aria-hidden="true"></canvas>
+          <span class="work-num mono">03</span>
+        </div>
+        <div class="pf-body">
+          <p class="pf-meta mono" data-i18n="pf.p3m">2026 · telegram-бот</p>
+          <h3 data-i18n="pf.p3t">Бот приёма заявок</h3>
+          <p class="pf-desc" data-i18n="pf.p3d">Telegram-бот, который собирает заявки через анкету и мгновенно отправляет их менеджеру: без потерянных клиентов и ручного копирования.</p>
+          <p class="pf-done mono" data-i18n="pf.done">что сделано:</p>
+          <ul class="pf-points">
+            <li data-i18n="pf.p3i1">сценарий анкеты и проверка ответов</li>
+            <li data-i18n="pf.p3i2">уведомления менеджеру в чат</li>
+            <li data-i18n="pf.p3i3">выгрузка заявок в таблицу</li>
+          </ul>
+          <div class="tags mono">
+            <span>Python</span>
+            <span>Telegram API</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ваш проект -->
+      <article class="pf-item pf-cta reveal">
+        <div class="pf-body">
+          <h3 data-i18n="pf.p4t">Здесь может быть ваш проект</h3>
+          <p class="pf-desc" data-i18n="pf.p4d">Опишите задачу: соберу прототип, посчитаю сроки и стоимость.</p>
+          <a class="btn btn-solid" href="index.html#contact" data-i18n="pf.p4btn">Обсудить ↗</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- ===== подвал ===== -->
+  <footer class="site-footer">
+    <span class="mono" data-i18n="footer.rights">© 2026 DaniiKodit · сайты и боты под ключ</span>
+    <span class="mono footer-made" data-i18n="footer.made">сделано руками, без конструкторов</span>
+    <a class="mono" href="#top" data-i18n="footer.top">наверх ↑</a>
+  </footer>
+
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
