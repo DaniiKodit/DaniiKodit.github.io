@@ -314,7 +314,7 @@ function initHeroDither() {
 
   const CELL = 5;              // размер «пикселя» в css-px
   let W = 0, H = 0, img = null;
-  let rowA = null, rowB = null, edgeY = null;
+  let crestBack = null, crestFront = null;
 
   function resize() {
     const rect = canvas.parentElement.getBoundingClientRect();
@@ -323,9 +323,8 @@ function initHeroDither() {
     canvas.width = W;
     canvas.height = H;
     img = ctx.createImageData(W, H);
-    rowA = new Float32Array(H);
-    rowB = new Float32Array(H);
-    edgeY = new Float32Array(H);
+    crestBack = new Float32Array(W);
+    crestFront = new Float32Array(W);
     // смена размера очищает canvas — сразу рисуем кадр, не дожидаясь rAF
     // (у скрытой вкладки rAF заморожен, и фон остался бы пустым)
     render(performance.now());
@@ -357,43 +356,49 @@ function initHeroDither() {
     }
   }
 
-  function render(now) {
-    const phase = now * 0.0011;
+  // рисует один слой волны: всё ниже линии гребня заливается
+  // дизерингом, плотность тает с глубиной; overwrite=true затирает
+  // задний слой, чтобы передняя волна перекрывала заднюю
+  function drawWave(crest, fadeLen, crestColor, overwrite) {
     const data = img.data;
-
-    // фазы двух встречных волн зависят только от ряда — считаем заранее
-    for (let y = 0; y < H; y++) {
-      rowA[y] = y * 0.03 + phase * 2;
-      rowB[y] = 1.7 - y * 0.052 - phase * 3;
-      const dy = (y - H / 2) / H;
-      edgeY[y] = dy * dy;
-    }
-
-    for (let y = 0; y < H; y++) {
-      const bayerRow = BAYER8[y & 7];
-      const a = rowA[y];
-      const b = rowB[y];
-      const ey = edgeY[y];
-
-      for (let x = 0; x < W; x++) {
-        // две встречные синусоиды дают бесконечную пиксельную рябь
-        let v = 0.5 + 0.32 * Math.sin(x * 0.045 + a) + 0.2 * Math.sin(x * 0.021 + b);
-
-        // затемнение к центру, чтобы читался текст
-        const dx = (x - W / 2) / W;
-        const edge = Math.min(1, (dx * dx + ey) * 5.76);
-        v *= 0.12 + 0.88 * edge;
-
+    for (let x = 0; x < W; x++) {
+      const top = Math.max(0, crest[x] | 0);
+      for (let y = top; y < H; y++) {
+        const depth = y - crest[x];
+        const v = 1 - depth / fadeLen;
+        if (v <= 0) break;
         const i = (y * W + x) * 4;
-        if (v * 64 > bayerRow[x & 7]) {
-          const c = v > 0.96 ? C_ACC : v > 0.72 ? C_INK : C_DIM;
+        if (v * 64 > BAYER8[y & 7][x & 7]) {
+          const c = depth < 2 ? crestColor : depth < 8 ? C_INK : C_DIM;
           data[i] = c[0]; data[i + 1] = c[1]; data[i + 2] = c[2];
           data[i + 3] = 255;
-        } else {
+        } else if (overwrite) {
           data[i + 3] = 0;
         }
       }
     }
+  }
+
+  function render(now) {
+    const phase = now * 0.0012;
+    img.data.fill(0);
+
+    // линии гребней: сумма двух синусоид на колонку, фаза бежит
+    // по кругу — волны катятся бесконечно
+    for (let x = 0; x < W; x++) {
+      crestBack[x] =
+        H * 0.66 +
+        H * 0.045 * Math.sin(x * 0.05 + phase * 1.6) +
+        H * 0.028 * Math.sin(x * 0.023 - phase * 2.4);
+      crestFront[x] =
+        H * 0.78 +
+        H * 0.055 * Math.sin(x * 0.042 - phase * 2.0) +
+        H * 0.032 * Math.sin(x * 0.019 + phase * 1.2);
+    }
+
+    drawWave(crestBack, H * 0.4, C_INK, false);   // задняя волна, тусклый гребень
+    drawWave(crestFront, H * 0.5, C_ACC, true);   // передняя волна, лаймовый гребень
+
     ctx.putImageData(img, 0, 0);
   }
 
