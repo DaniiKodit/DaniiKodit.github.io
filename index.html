@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230b0b0d'/><rect x='3' y='3' width='4' height='4' fill='%23c6f24e'/><rect x='9' y='9' width='4' height='4' fill='%23e8e6e0'/></svg>">
 </head>
 <body data-title-key="meta.title">
@@ -224,6 +224,8 @@
             <span class="mono" data-i18n="form.msg">Задача</span>
             <textarea name="message" rows="4" required data-i18n-ph="form.msgph" placeholder="Пара слов о проекте"></textarea>
           </label>
+          <!-- honeypot: люди это поле не видят, боты заполняют -->
+          <input class="hp-field" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn-solid" type="submit" data-i18n="form.send">Отправить ↗</button>
           <p class="form-status mono" id="form-status" aria-live="polite"></p>
         </form>
@@ -246,6 +248,6 @@
 
   <div class="scanlines" aria-hidden="true"></div>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=6"></script>
 </body>
 </html>

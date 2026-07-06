@@ -88,6 +88,9 @@ const I18N = {
     'form.send': 'Отправить ↗',
     'form.empty': '> заполните все поля',
     'form.ok': '> открываю почтовый клиент…',
+    'form.sending': '> отправляю заявку…',
+    'form.success': '> заявка отправлена, скоро отвечу',
+    'form.error': '> не удалось отправить — напишите в Telegram @Off05',
 
     'pf.label': 'Портфолио',
     'pf.title': 'Все проекты',
@@ -217,6 +220,9 @@ const I18N = {
     'form.send': 'Send ↗',
     'form.empty': '> please fill in all fields',
     'form.ok': '> opening your mail client…',
+    'form.sending': '> sending your request…',
+    'form.success': '> request sent, I’ll reply soon',
+    'form.error': '> couldn’t send — ping me on Telegram @Off05',
 
     'pf.label': 'Portfolio',
     'pf.title': 'All projects',
@@ -717,14 +723,27 @@ function initBurger() {
   );
 }
 
-/* ---------- форма → письмо ---------- */
+/* ---------- форма → Telegram ---------- */
+
+// URL Cloudflare Worker (см. worker/worker.js и README).
+// Пока пусто — форма откатывается на почтовый клиент, сайт не ломается.
+const FORM_ENDPOINT = '';
+
+// откат: открыть почтовый клиент с готовым письмом
+function mailtoFallback(status, name, contact, message) {
+  const subject = encodeURIComponent(`Заявка с сайта: ${name}`);
+  const body = encodeURIComponent(`Имя: ${name}\nКонтакт: ${contact}\n\n${message}`);
+  status.textContent = t('form.ok');
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+}
 
 function initForm() {
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
   if (!form) return;
+  const button = form.querySelector('button[type="submit"]');
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = form.name.value.trim();
     const contact = form.contact.value.trim();
@@ -735,10 +754,36 @@ function initForm() {
       return;
     }
 
-    const subject = encodeURIComponent(`Заявка с сайта: ${name}`);
-    const body = encodeURIComponent(`Имя: ${name}\nКонтакт: ${contact}\n\n${message}`);
-    status.textContent = t('form.ok');
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    // приёмник не настроен — используем почтовый клиент
+    if (!FORM_ENDPOINT) {
+      mailtoFallback(status, name, contact, message);
+      return;
+    }
+
+    status.textContent = t('form.sending');
+    button.disabled = true;
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          contact,
+          message,
+          company: form.company ? form.company.value : '', // honeypot
+          lang: currentLang,
+          page: location.href,
+        }),
+      });
+      if (!res.ok) throw new Error(res.status);
+      status.textContent = t('form.success');
+      form.reset();
+    } catch (err) {
+      // не потеряем заявку: предлагаем написать напрямую
+      status.textContent = t('form.error');
+    } finally {
+      button.disabled = false;
+    }
   });
 }
 

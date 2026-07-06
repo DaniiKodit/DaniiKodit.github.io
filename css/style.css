@@ -639,6 +639,15 @@ section { scroll-margin-top: 90px; }
   border-color: var(--accent);
 }
 
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .form-status {
   font-size: 13px;
   color: var(--accent);

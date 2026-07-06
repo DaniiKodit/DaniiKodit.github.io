@@ -19,3 +19,34 @@ python -m http.server 8123
 - `portfolio.html` — подробное портфолио
 - `css/style.css` — дизайн-система и стили
 - `js/main.js` — переводы RU/EN, дизеринг-canvas, анимации
+- `worker/worker.js` — Cloudflare Worker для приёма заявок в Telegram
+
+## Приём заявок в Telegram
+
+GitHub Pages — статичный хостинг без сервера, поэтому звать Telegram API
+прямо из браузера нельзя (токен бота утёк бы в код). Заявки принимает
+маленький бесплатный Cloudflare Worker: он хранит токен у себя в секретах
+и пересылает заявку в Telegram.
+
+Пока `FORM_ENDPOINT` в `js/main.js` пуст, форма просто открывает почтовый
+клиент — сайт работает и без воркера. Чтобы включить Telegram:
+
+1. **Бот.** В Telegram напиши [@BotFather](https://t.me/BotFather) → `/newbot`,
+   получи токен вида `123456:AA...`.
+2. **Свой ID.** Напиши [@userinfobot](https://t.me/userinfobot) — он пришлёт
+   твой числовой `chat_id`. Затем один раз напиши что-нибудь своему новому боту,
+   чтобы он мог тебе отвечать.
+3. **Worker.** На dash.cloudflare.com → Workers & Pages → Create → Worker.
+   Вставь код из `worker/worker.js`, задеплой.
+4. **Секреты.** В настройках воркера (Settings → Variables and Secrets)
+   добавь секреты: `BOT_TOKEN`, `CHAT_ID` и (по желанию) `ALLOWED_ORIGIN`
+   со значением `https://<логин>.github.io`. Токен нигде в коде не хранится.
+5. **Подключение.** Скопируй URL воркера (вида
+   `https://portfolio-form.<аккаунт>.workers.dev`) и впиши его в константу
+   `FORM_ENDPOINT` в начале блока «форма → Telegram» в `js/main.js`.
+
+Готово: заявки с формы прилетают тебе в Telegram. Если воркер недоступен,
+форма покажет «напишите в Telegram @Off05», чтобы заявка не потерялась.
+
+> Скрытое поле `company` в форме — honeypot: люди его не видят, а боты-спамеры
+> заполняют, и воркер такие заявки молча отбрасывает.
