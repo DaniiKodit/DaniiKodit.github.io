@@ -1,0 +1,9 @@
+# Конфиг для деплоя воркера через Wrangler CLI.
+# Секреты (BOT_TOKEN, CHAT_ID) сюда НЕ пишутся — они задаются командой
+#   wrangler secret put BOT_TOKEN
+#   wrangler secret put CHAT_ID
+# и хранятся в Cloudflare, а не в этом файле.
+
+name = "portfolio-form"
+main = "worker.js"
+compatibility_date = "2024-11-01"
