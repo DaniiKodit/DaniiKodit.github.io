@@ -727,7 +727,7 @@ function initBurger() {
 
 // URL Cloudflare Worker (см. worker/worker.js и README).
 // Пока пусто — форма откатывается на почтовый клиент, сайт не ломается.
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://portfolio-form.d82208962.workers.dev';
 
 // откат: открыть почтовый клиент с готовым письмом
 function mailtoFallback(status, name, contact, message) {
