@@ -275,30 +275,19 @@ section { scroll-margin-top: 90px; }
   color: var(--muted);
 }
 
-/* ---------- бегущая строка ---------- */
+/* ---------- пиксельный тикер ---------- */
 .marquee {
   overflow: hidden;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding: 14px 0;
   margin-top: 90px;
   background: var(--bg-2);
 }
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 28s linear infinite;
-}
-.marquee-text {
-  white-space: nowrap;
-  font-size: 14px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  padding-right: 12px;
-}
-@keyframes marquee {
-  to { transform: translateX(-50%); }
+#pixel-ticker {
+  display: block;
+  width: 100%;
+  height: 64px;
+  image-rendering: pixelated;
 }
 
 /* ---------- секции ---------- */
@@ -682,7 +671,6 @@ section { scroll-margin-top: 90px; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .marquee-track { animation: none; }
   html { scroll-behavior: auto; }
 }
 

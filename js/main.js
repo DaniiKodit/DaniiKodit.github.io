@@ -245,6 +245,7 @@ function setLang(lang, animate) {
     btn.classList.toggle('active', btn.dataset.lang === currentLang);
   });
 
+  if (tickerRefresh) tickerRefresh();
   if (animate) scrambleAll();
 }
 
@@ -412,6 +413,122 @@ function initHeroDither() {
   schedule();
 }
 
+/* ---------- пиксельный тикер ---------- */
+
+// setLang дёргает этот хук, чтобы тикер перерисовал текст на новом языке
+let tickerRefresh = null;
+
+function initPixelTicker() {
+  const canvas = document.getElementById('pixel-ticker');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const CELL = 4;              // размер «пикселя» в css-px
+  const STRIP = 64;            // высота полосы в css-px
+  let W = 0, H = 0, img = null;
+  let mask = null, maskW = 1;
+
+  // текст рендерится в offscreen-канвас и превращается в битовую маску
+  function buildMask() {
+    const text = t('marquee').toUpperCase();
+    const m = document.createElement('canvas');
+    const mc = m.getContext('2d');
+    const font = `${H - 4}px "JetBrains Mono", monospace`;
+    mc.font = font;
+    maskW = Math.max(1, Math.ceil(mc.measureText(text).width));
+    m.width = maskW;
+    m.height = H;
+    mc.font = font;            // смена размера сбрасывает состояние
+    mc.textBaseline = 'middle';
+    mc.fillStyle = '#fff';
+    mc.fillText(text, 0, H / 2 + 1);
+
+    const d = mc.getImageData(0, 0, maskW, H).data;
+    mask = new Uint8Array(maskW * H);
+    for (let i = 0; i < mask.length; i++) mask[i] = d[i * 4 + 3] > 120 ? 1 : 0;
+  }
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    W = Math.max(1, Math.ceil(rect.width / CELL));
+    H = Math.round(STRIP / CELL);
+    canvas.width = W;
+    canvas.height = H;
+    img = ctx.createImageData(W, H);
+    buildMask();
+    render(performance.now());
+  }
+
+  function render(now) {
+    if (!mask) return;
+    const data = img.data;
+    data.fill(0);
+
+    const offset = Math.floor(now * 0.02) % maskW;  // скорость прокрутки
+    const phase = now * 0.0025;
+    const FADE = Math.min(14, W >> 2);              // растворение у краёв
+
+    for (let sx = 0; sx < W; sx++) {
+      const mx = (sx + offset) % maskW;
+      // волна прокатывается по строке: буквы приподнимаются,
+      // а на гребне подсвечиваются акцентом
+      const wobble = Math.sin(sx * 0.09 - phase);
+      const dy = Math.round(wobble * 1.6);
+      const c = wobble > 0.9 ? C_ACC : C_INK;
+      const edge = Math.min(sx, W - 1 - sx);
+
+      for (let sy = 0; sy < H; sy++) {
+        const my = sy - dy;
+        if (my < 0 || my >= H) continue;
+        if (!mask[my * maskW + mx]) continue;
+        if (edge < FADE && (edge / FADE) * 64 <= BAYER8[sy & 7][sx & 7]) continue;
+        const i = (sy * W + sx) * 4;
+        data[i] = c[0]; data[i + 1] = c[1]; data[i + 2] = c[2];
+        data[i + 3] = 255;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+  }
+
+  new ResizeObserver(resize).observe(canvas.parentElement);
+  resize();
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let stripVisible = true;
+  let rafId = 0;
+  let last = 0;
+
+  function frame(now) {
+    rafId = 0;
+    if (now - last > 70) {
+      last = now;
+      render(now);
+    }
+    schedule();
+  }
+
+  function schedule() {
+    if (!reduceMotion && stripVisible && !document.hidden && !rafId) {
+      rafId = requestAnimationFrame(frame);
+    }
+  }
+
+  new IntersectionObserver((entries) => {
+    stripVisible = entries[0].isIntersecting;
+    schedule();
+  }).observe(canvas.parentElement);
+
+  document.addEventListener('visibilitychange', schedule);
+
+  tickerRefresh = () => { buildMask(); render(performance.now()); };
+  // когда догрузится моноширинный шрифт, перерисовываем маску начисто
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => tickerRefresh && tickerRefresh());
+  }
+
+  schedule();
+}
+
 /* ---------- статичные дизеринг-обложки проектов ---------- */
 
 function drawWorkCanvas(canvas) {
@@ -531,6 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   initHeroDither();
+  initPixelTicker();
   initWorkCanvases();
   initReveal();
   initBurger();
