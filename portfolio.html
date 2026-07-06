@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230b0b0d'/><rect x='3' y='3' width='4' height='4' fill='%23c6f24e'/><rect x='9' y='9' width='4' height='4' fill='%23e8e6e0'/></svg>">
 </head>
 <body data-title-key="meta.titlePf">
@@ -47,73 +47,56 @@
         <p class="section-sub" data-i18n="pf.sub">Сайты и Telegram-боты: что уже сделано и как это работает.</p>
       </div>
 
-      <!-- проект 1 -->
+      <!-- проект 1: Visit Vienna -->
       <article class="pf-item reveal">
         <div class="work-media">
           <canvas class="work-canvas" data-seed="7" aria-hidden="true"></canvas>
           <span class="work-num mono">01</span>
         </div>
         <div class="pf-body">
-          <p class="pf-meta mono" data-i18n="pf.p1m">2026 · лендинг</p>
-          <h3 data-i18n="pf.p1t">Бьюти-салон «ВДОХ»</h3>
-          <p class="pf-desc" data-i18n="pf.p1d">Многостраничный лендинг для салона красоты: услуги, мастера, онлайн-запись. Изображения сгенерированы нейросетью под фирменный стиль.</p>
+          <p class="pf-meta mono" data-i18n="pf.p1m">2026 · сайт под ключ · visitviennaservice.com</p>
+          <h3 data-i18n="pf.p1t">Visit Vienna: трансферы и экскурсии</h3>
+          <p class="pf-desc" data-i18n="pf.p1d">Полнофункциональный сайт для сервиса премиум-трансферов и экскурсий по Вене и Европе. Платформа автоматизирует приём заявок, витрину услуг и общение с клиентами.</p>
           <p class="pf-done mono" data-i18n="pf.done">что сделано:</p>
           <ul class="pf-points">
-            <li data-i18n="pf.p1i1">структура и тексты под запись клиентов</li>
-            <li data-i18n="pf.p1i2">адаптивная вёрстка и анимации</li>
-            <li data-i18n="pf.p1i3">AI-генерация изображений в стиле салона</li>
+            <li data-i18n="pf.p1i1">двуязычный сайт RU/EN с мгновенным переключением</li>
+            <li data-i18n="pf.p1i2">автослайдер на главной с фоновыми фото</li>
+            <li data-i18n="pf.p1i3">каталог из 18 экскурсий со ссылками на бронирование</li>
+            <li data-i18n="pf.p1i4">4 вида трансферов и форма бронирования с датой и временем</li>
+            <li data-i18n="pf.p1i5">светлая и тёмная темы, контент управляется через Django Admin</li>
+            <li data-i18n="pf.p1i6">деплой на VPS: Docker, Nginx, SSL</li>
           </ul>
           <div class="tags mono">
-            <span>HTML5</span>
-            <span>Tailwind CSS</span>
-            <span>Alpine.js</span>
+            <span>Django</span>
+            <span>Docker</span>
+            <span>RU/EN</span>
           </div>
+          <a class="pf-link mono" href="https://visitviennaservice.com" target="_blank" rel="noopener" data-i18n="pf.p1link">visitviennaservice.com ↗</a>
         </div>
       </article>
 
-      <!-- проект 2 -->
+      <!-- проект 2: Lux Sea Property -->
       <article class="pf-item reveal">
         <div class="work-media">
           <canvas class="work-canvas" data-seed="23" aria-hidden="true"></canvas>
           <span class="work-num mono">02</span>
         </div>
         <div class="pf-body">
-          <p class="pf-meta mono" data-i18n="pf.p2m">2026 · витрина</p>
-          <h3 data-i18n="pf.p2t">Витрина продукта «Зерно»</h3>
-          <p class="pf-desc" data-i18n="pf.p2d">Продуктовая витрина для локального бренда: каталог с карточками, история производства, карта точек продаж.</p>
+          <p class="pf-meta mono" data-i18n="pf.p2m">2026 · сайт под ключ</p>
+          <h3 data-i18n="pf.p2t">Lux Sea Property: зарубежная недвижимость</h3>
+          <p class="pf-desc" data-i18n="pf.p2d">Сайт агентства недвижимости, работающего в Грузии, Северном Кипре и Болгарии. Платформа автоматизирует привлечение клиентов, показ объектов и сбор заявок.</p>
           <p class="pf-done mono" data-i18n="pf.done">что сделано:</p>
           <ul class="pf-points">
-            <li data-i18n="pf.p2i1">каталог с карточками продукта</li>
-            <li data-i18n="pf.p2i2">страница истории бренда</li>
-            <li data-i18n="pf.p2i3">карта точек продаж</li>
+            <li data-i18n="pf.p2i1">многоязычный сайт RU/EN с автоматическим переключением</li>
+            <li data-i18n="pf.p2i2">каталог объектов: фильтры по цене и спальням, поиск</li>
+            <li data-i18n="pf.p2i3">умная форма заявок с бюджетами под каждую страну</li>
+            <li data-i18n="pf.p2i4">Telegram-уведомления о новых заявках в реальном времени</li>
+            <li data-i18n="pf.p2i5">SEO: sitemap, robots.txt, Open Graph, Schema.org</li>
           </ul>
           <div class="tags mono">
-            <span>HTML5</span>
-            <span>Tailwind CSS</span>
-            <span>JavaScript</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- проект 3 -->
-      <article class="pf-item reveal">
-        <div class="work-media">
-          <canvas class="work-canvas" data-seed="41" aria-hidden="true"></canvas>
-          <span class="work-num mono">03</span>
-        </div>
-        <div class="pf-body">
-          <p class="pf-meta mono" data-i18n="pf.p3m">2026 · telegram-бот</p>
-          <h3 data-i18n="pf.p3t">Бот приёма заявок</h3>
-          <p class="pf-desc" data-i18n="pf.p3d">Telegram-бот, который собирает заявки через анкету и мгновенно отправляет их менеджеру: без потерянных клиентов и ручного копирования.</p>
-          <p class="pf-done mono" data-i18n="pf.done">что сделано:</p>
-          <ul class="pf-points">
-            <li data-i18n="pf.p3i1">сценарий анкеты и проверка ответов</li>
-            <li data-i18n="pf.p3i2">уведомления менеджеру в чат</li>
-            <li data-i18n="pf.p3i3">выгрузка заявок в таблицу</li>
-          </ul>
-          <div class="tags mono">
-            <span>Python</span>
-            <span>Telegram API</span>
+            <span>каталог</span>
+            <span>Telegram</span>
+            <span>SEO</span>
           </div>
         </div>
       </article>
@@ -138,6 +121,6 @@
 
   <div class="scanlines" aria-hidden="true"></div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=3"></script>
 </body>
 </html>
