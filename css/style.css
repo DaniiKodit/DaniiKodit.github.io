@@ -399,11 +399,13 @@ section { scroll-margin-top: 90px; }
   object-fit: cover;
   transition: opacity 0.3s steps(6), transform 0.3s steps(6);
 }
+.cover-top { object-position: center top; }
 .cover-alt { opacity: 0; }
 .work:hover .cover,
 .pf-item:hover .cover { transform: scale(1.04); }
 .work:hover .cover-alt,
 .pf-item:hover .cover-alt { opacity: 1; }
+.pf-item:hover .work-canvas { transform: scale(1.04); }
 
 .work-num {
   position: absolute;

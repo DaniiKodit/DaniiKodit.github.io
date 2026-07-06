@@ -51,6 +51,14 @@ const I18N = {
     'works.w2d': 'Сайт агентства зарубежной недвижимости: каталог объектов с фильтрами, умные заявки, Telegram-уведомления.',
     'works.w2tag1': 'недвижимость',
     'works.w2tag2': 'каталог',
+    'works.w3t': 'Киномир',
+    'works.w3d': 'Кинопортал для онлайн-просмотра: каталог с фильтрами по жанрам, умный поиск, встроенный плеер.',
+    'works.w3tag1': 'кинопортал',
+    'works.w3tag2': 'каталог',
+    'works.w4t': 'Бот онлайн-записи',
+    'works.w4d': 'Telegram-бот записи клиентов: выбор услуги, мастера и свободного слота, автоматические напоминания.',
+    'works.w4tag1': 'Telegram-бот',
+    'works.w4tag2': 'Python',
 
     'services.label': '03 · Услуги',
     'services.title': 'Прайс без звёздочек',
@@ -103,9 +111,26 @@ const I18N = {
     'pf.p2i3': 'умная форма заявок с бюджетами под каждую страну',
     'pf.p2i4': 'Telegram-уведомления о новых заявках в реальном времени',
     'pf.p2i5': 'SEO: sitemap, robots.txt, Open Graph, Schema.org',
-    'pf.p4t': 'Здесь может быть ваш проект',
-    'pf.p4d': 'Опишите задачу: соберу прототип, посчитаю сроки и стоимость.',
-    'pf.p4btn': 'Обсудить ↗',
+    'pf.p3m': '2026 · кинопортал · kinomir.online',
+    'pf.p3t': 'Киномир: онлайн-кинотеатр',
+    'pf.p3d': 'Полнофункциональный сайт для просмотра фильмов онлайн. Удобный доступ к каталогу без регистрации и подписки.',
+    'pf.p3i1': 'каталог фильмов с фильтрами по жанрам и категориям',
+    'pf.p3i2': 'умный поиск с автоподсказками в реальном времени',
+    'pf.p3i3': 'встроенный плеер с рекламным блоком',
+    'pf.p3i4': 'адаптивный дизайн для мобильных и десктопа',
+    'pf.p3i5': 'Open Graph для красивых превью в мессенджерах, юридические страницы',
+    'pf.p3link': 'kinomir.online ↗',
+    'pf.p4m': '2026 · telegram-бот',
+    'pf.p4t': 'Бот онлайн-записи',
+    'pf.p4d': 'Telegram-бот, который берёт на себя запись клиентов: показывает свободные слоты, оформляет визит и напоминает о нём. Работает 24/7 и разгружает администратора.',
+    'pf.p4i1': 'интерактивный календарь свободных слотов',
+    'pf.p4i2': 'выбор услуги и специалиста в пару нажатий',
+    'pf.p4i3': 'подтверждение записи и напоминания клиенту',
+    'pf.p4i4': 'уведомления бизнесу о новых и отменённых записях',
+    'pf.p4i5': 'панель администратора и выгрузка записей',
+    'pf.ctat': 'Здесь может быть ваш проект',
+    'pf.ctad': 'Опишите задачу: соберу прототип, посчитаю сроки и стоимость.',
+    'pf.ctabtn': 'Обсудить ↗',
 
     'footer.rights': '© 2026 DaniiKodit · сайты и боты под ключ',
     'footer.made': 'сделано руками, без конструкторов',
@@ -155,6 +180,14 @@ const I18N = {
     'works.w2d': 'Website for an overseas real estate agency: property catalogue with filters, smart lead forms, Telegram notifications.',
     'works.w2tag1': 'real estate',
     'works.w2tag2': 'catalogue',
+    'works.w3t': 'Kinomir',
+    'works.w3d': 'Online cinema portal: catalogue with genre filters, smart search and a built-in player.',
+    'works.w3tag1': 'cinema portal',
+    'works.w3tag2': 'catalogue',
+    'works.w4t': 'Online booking bot',
+    'works.w4d': 'Telegram bot for client bookings: pick a service, specialist and free slot, with automatic reminders.',
+    'works.w4tag1': 'Telegram bot',
+    'works.w4tag2': 'Python',
 
     'services.label': '03 · Services',
     'services.title': 'Pricing, no asterisks',
@@ -207,9 +240,26 @@ const I18N = {
     'pf.p2i3': 'smart lead form with per-country budgets',
     'pf.p2i4': 'real-time Telegram notifications for new leads',
     'pf.p2i5': 'SEO: sitemap, robots.txt, Open Graph, Schema.org',
-    'pf.p4t': 'Your project could be here',
-    'pf.p4d': 'Describe the task: I will build a prototype and estimate time and cost.',
-    'pf.p4btn': 'Discuss ↗',
+    'pf.p3m': '2026 · cinema portal · kinomir.online',
+    'pf.p3t': 'Kinomir: online cinema',
+    'pf.p3d': 'Full-featured site for watching movies online. Easy access to the catalogue with no sign-up or subscription.',
+    'pf.p3i1': 'movie catalogue with genre and category filters',
+    'pf.p3i2': 'smart search with real-time suggestions',
+    'pf.p3i3': 'built-in player with an ad slot',
+    'pf.p3i4': 'responsive design for mobile and desktop',
+    'pf.p3i5': 'Open Graph for rich link previews, legal pages',
+    'pf.p3link': 'kinomir.online ↗',
+    'pf.p4m': '2026 · telegram bot',
+    'pf.p4t': 'Online booking bot',
+    'pf.p4d': 'A Telegram bot that handles client bookings: shows free slots, books the visit and sends reminders. Works 24/7 and offloads the admin.',
+    'pf.p4i1': 'interactive calendar of free slots',
+    'pf.p4i2': 'pick a service and specialist in a couple of taps',
+    'pf.p4i3': 'booking confirmation and client reminders',
+    'pf.p4i4': 'business alerts for new and cancelled bookings',
+    'pf.p4i5': 'admin panel and booking export',
+    'pf.ctat': 'Your project could be here',
+    'pf.ctad': 'Describe the task: I will build a prototype and estimate time and cost.',
+    'pf.ctabtn': 'Discuss ↗',
 
     'footer.rights': '© 2026 DaniiKodit · websites & bots',
     'footer.made': 'built by hand, no site builders',
@@ -568,8 +618,64 @@ function drawWorkCanvas(canvas) {
   ctx.putImageData(img, 0, 0);
 }
 
+// пиксельная обложка бота онлайн-записи: календарь со слотами
+// и бейджем-галочкой (подтверждённая запись)
+function drawBotCover(canvas) {
+  const ctx = canvas.getContext('2d');
+  const W = 128, H = 72;
+  canvas.width = W;
+  canvas.height = H;
+  const rect = (x, y, w, h, c) => { ctx.fillStyle = c; ctx.fillRect(x, y, w, h); };
+
+  const BG = '#111114', DIM = '#2a2a30', INK = '#e8e6e0', ACC = '#c6f24e';
+
+  rect(0, 0, W, H, BG);
+
+  // дизеринг-виньетка по краям — привязка к общему пиксельному стилю
+  ctx.fillStyle = '#1c1c22';
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const edge = Math.min(x, W - 1 - x, y, H - 1 - y);
+      const v = 1 - edge / 24;
+      if (v > 0 && v * 64 > BAYER8[y & 7][x & 7]) ctx.fillRect(x, y, 1, 1);
+    }
+  }
+
+  // тело календаря
+  const cx = 32, cy = 13, cw = 64, ch = 46;
+  rect(cx - 1, cy - 1, cw + 2, ch + 2, ACC);   // лаймовая рамка
+  rect(cx, cy, cw, ch, '#17171c');             // подложка
+  rect(cx, cy, cw, 9, ACC);                    // шапка
+  rect(cx + 11, cy - 3, 3, 5, INK);            // «кольца» переплёта
+  rect(cx + cw - 14, cy - 3, 3, 5, INK);
+
+  // сетка дней 7×4, часть слотов занята (лайм)
+  const cols = 7, rows = 4, cell = 6, gap = 2;
+  const gx = cx + 5, gy = cy + 14;
+  const booked = { '0,3': 1, '1,1': 1, '2,5': 1 };
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const x = gx + c * (cell + gap);
+      const y = gy + r * (cell + gap);
+      rect(x, y, cell, cell, booked[r + ',' + c] ? ACC : DIM);
+    }
+  }
+
+  // бейдж подтверждения с галочкой в правом нижнем углу
+  const bx = cx + cw - 15, by = cy + ch - 15;
+  rect(bx - 2, by - 2, 18, 18, BG);
+  rect(bx, by, 14, 14, ACC);
+  const check = [[3, 7], [4, 8], [5, 9], [6, 8], [7, 7], [8, 6], [9, 5], [10, 4]];
+  ctx.fillStyle = BG;
+  check.forEach(([dx, dy]) => ctx.fillRect(bx + dx, by + dy, 2, 2));
+}
+
 function initWorkCanvases() {
   document.querySelectorAll('.work-canvas').forEach((canvas) => {
+    if (canvas.dataset.cover === 'bot') {
+      drawBotCover(canvas);
+      return;
+    }
     new ResizeObserver(() => drawWorkCanvas(canvas)).observe(canvas.parentElement);
     drawWorkCanvas(canvas);
   });
