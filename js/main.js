@@ -587,7 +587,7 @@ function initPixelTicker() {
   schedule();
 }
 
-/* ---------- падающие звёзды у формы ---------- */
+/* ---------- звёздное небо у формы ---------- */
 
 function initStars() {
   const canvas = document.getElementById('pixel-stars');
@@ -597,7 +597,6 @@ function initStars() {
   const CELL = 5;              // размер «пикселя» в css-px
   let W = 0, H = 0, img = null;
   let stars = [];              // мерцающее звёздное поле
-  let meteors = [];            // падающие звёзды
 
   function put(x, y, c) {
     x |= 0; y |= 0;
@@ -605,21 +604,6 @@ function initStars() {
     const i = (y * W + x) * 4;
     const d = img.data;
     d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
-  }
-
-  // метеор появляется у верхнего или правого края и летит вниз-влево
-  function spawnMeteor(m) {
-    m.vx = -(6 + Math.random() * 8);
-    m.vy = 5 + Math.random() * 6;
-    m.len = 4 + ((Math.random() * 4) | 0);
-    m.accent = Math.random() < 0.25;
-    if (Math.random() < 0.5) {
-      m.x = W + m.len;
-      m.y = Math.random() * H * 0.5;
-    } else {
-      m.x = W * (0.3 + Math.random() * 0.7);
-      m.y = -m.len;
-    }
   }
 
   function resize() {
@@ -638,38 +622,19 @@ function initStars() {
         y: (Math.random() * H) | 0,
         phase: Math.random() * 6.28,
         tw: 0.5 + Math.random() * 1.5,   // скорость мерцания
+        accent: Math.random() < 0.06,    // редкие лаймовые звёзды
       });
     }
-    meteors = [];
-    for (let i = 0; i < 5; i++) {
-      const m = {};
-      spawnMeteor(m);
-      m.y = Math.random() * H;           // на старте раскиданы по небу
-      meteors.push(m);
-    }
-    render(performance.now(), 0);
+    render(performance.now());
   }
 
-  function render(now, dt) {
+  function render(now) {
     img.data.fill(0);
 
     // звёзды мерцают: то тусклые, то яркие, то гаснут
     for (const s of stars) {
       const b = Math.sin(now * 0.001 * s.tw + s.phase);
-      if (b > 0.1) put(s.x, s.y, b > 0.85 ? C_INK : C_DIM);
-    }
-
-    // метеоры: яркая голова и тающий хвост против движения
-    for (const m of meteors) {
-      m.x += m.vx * dt;
-      m.y += m.vy * dt;
-      const mag = Math.hypot(m.vx, m.vy);
-      const ux = m.vx / mag, uy = m.vy / mag;
-      for (let i = 0; i < m.len; i++) {
-        const c = i === 0 ? (m.accent ? C_ACC : C_INK) : i < 3 ? C_INK : C_DIM;
-        put(Math.round(m.x - ux * i), Math.round(m.y - uy * i), c);
-      }
-      if (m.x < -m.len || m.y > H + m.len) spawnMeteor(m);
+      if (b > 0.1) put(s.x, s.y, b > 0.85 ? (s.accent ? C_ACC : C_INK) : C_DIM);
     }
 
     ctx.putImageData(img, 0, 0);
@@ -686,9 +651,8 @@ function initStars() {
   function frame(now) {
     rafId = 0;
     if (now - last > 80) {
-      const dt = Math.min(0.2, (now - last) / 1000);
       last = now;
-      render(now, dt);
+      render(now);
     }
     schedule();
   }
