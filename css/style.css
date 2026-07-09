@@ -639,6 +639,33 @@ section { scroll-margin-top: 90px; }
   border-color: var(--accent);
 }
 
+/* падающие звёзды позади секции контактов */
+#contact {
+  position: relative;
+  overflow: hidden;
+}
+#pixel-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  opacity: 0.5;
+  pointer-events: none;
+}
+#contact .section-head,
+#contact .contact-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.form-consent {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 480px;
+}
+
 .hp-field {
   position: absolute;
   left: -9999px;
