@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DaniiKodit · политика конфиденциальности</title>
+  <meta name="description" content="Политика обработки персональных данных сайта DaniiKodit: какие данные собирает форма заявки, зачем и как их удалить.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=9">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230b0b0d'/><rect x='3' y='3' width='4' height='4' fill='%23c6f24e'/><rect x='9' y='9' width='4' height='4' fill='%23e8e6e0'/></svg>">
+</head>
+<body data-title-key="meta.titlePr">
+
+  <!-- ===== шапка ===== -->
+  <header class="site-header">
+    <a class="logo" href="index.html">DK<sup>®</sup></a>
+
+    <nav class="site-nav" id="site-nav">
+      <a href="index.html"          data-i18n="nav.home">Главная</a>
+      <a href="index.html#about"    data-i18n="nav.about">Обо мне</a>
+      <a href="index.html#services" data-i18n="nav.services">Услуги</a>
+      <a href="index.html#contact"  data-i18n="nav.contact">Контакты</a>
+    </nav>
+
+    <div class="header-right">
+      <div class="lang-switch" role="group" aria-label="Язык">
+        <button type="button" data-lang="ru" class="active">RU</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a class="btn btn-solid btn-small" href="index.html#contact" data-i18n="nav.cta">Связаться</a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="section section-first legal">
+      <div class="section-head reveal">
+        <span class="section-label mono" data-i18n="pr.label">Документ</span>
+        <h1 class="section-title js-scramble" data-i18n="pr.title">Политика конфиденциальности</h1>
+        <p class="pr-updated mono" data-i18n="pr.updated">обновлено: 9 июля 2026</p>
+      </div>
+
+      <p class="legal-intro reveal" data-i18n="pr.intro">Эта страница простым языком объясняет, какие данные собирает сайт, зачем они нужны и что с ними происходит. Оператор данных: DaniiKodit.</p>
+
+      <div class="legal-body reveal">
+        <h3 data-i18n="pr.s1t">1. Какие данные собираются</h3>
+        <p data-i18n="pr.s1d">Только то, что вы сами вводите в форму заявки: имя, контакт для связи (Telegram или email) и текст сообщения. Сайт не требует регистрации и не собирает данные в фоне.</p>
+
+        <h3 data-i18n="pr.s2t">2. Зачем они нужны</h3>
+        <p data-i18n="pr.s2d">Чтобы ответить на вашу заявку и обсудить проект. Данные не используются для рассылок и рекламы.</p>
+
+        <h3 data-i18n="pr.s3t">3. Как обрабатываются</h3>
+        <p data-i18n="pr.s3d">Заявка передаётся через сервис Cloudflare Workers и доставляется оператору в Telegram. На самом сайте данные не сохраняются: базы данных у сайта нет.</p>
+
+        <h3 data-i18n="pr.s4t">4. Cookie и localStorage</h3>
+        <p data-i18n="pr.s4d">Сайт не использует cookie и счётчики аналитики. В localStorage браузера хранится только выбранный язык интерфейса (ru/en) — это настройка, а не персональные данные.</p>
+
+        <h3 data-i18n="pr.s5t">5. Передача третьим лицам</h3>
+        <p data-i18n="pr.s5d">Данные не продаются и не передаются третьим лицам. Исключение: технические посредники доставки сообщения (Cloudflare, Telegram) в объёме, необходимом для работы формы.</p>
+
+        <h3 data-i18n="pr.s6t">6. Ваши права и согласие</h3>
+        <p data-i18n="pr.s6d">Вы можете запросить удаление своих данных из переписки: напишите на d82208962@gmail.com или в Telegram @Off05. Отправляя форму, вы даёте согласие на обработку персональных данных в соответствии с 152-ФЗ «О персональных данных».</p>
+      </div>
+
+      <a class="btn btn-ghost legal-back reveal" href="index.html" data-i18n="pr.back">← На главную</a>
+    </section>
+  </main>
+
+  <!-- ===== подвал ===== -->
+  <footer class="site-footer">
+    <span class="mono" data-i18n="footer.rights">© 2026 DaniiKodit · сайты и боты под ключ</span>
+    <a class="mono" href="privacy.html" data-i18n="footer.privacy">политика конфиденциальности</a>
+    <a class="mono" href="#top" data-i18n="footer.top">наверх ↑</a>
+  </footer>
+
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <script src="js/main.js?v=9"></script>
+</body>
+</html>

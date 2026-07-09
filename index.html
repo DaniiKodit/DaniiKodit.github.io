@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=9">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230b0b0d'/><rect x='3' y='3' width='4' height='4' fill='%23c6f24e'/><rect x='9' y='9' width='4' height='4' fill='%23e8e6e0'/></svg>">
 </head>
 <body data-title-key="meta.title">
@@ -229,7 +229,7 @@
           <input class="hp-field" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn-solid" type="submit" data-i18n="form.send">Отправить ↗</button>
           <p class="form-status mono" id="form-status" aria-live="polite"></p>
-          <p class="form-consent" data-i18n="form.consent">Отправляя форму, вы даёте согласие на обработку персональных данных (152-ФЗ).</p>
+          <p class="form-consent"><span data-i18n="form.consent1">Отправляя форму, вы соглашаетесь с </span><a href="privacy.html" data-i18n="form.consent2">политикой обработки персональных данных</a><span data-i18n="form.consent3"> (152-ФЗ).</span></p>
         </form>
 
         <div class="contact-direct reveal">
@@ -244,12 +244,12 @@
   <!-- ===== подвал ===== -->
   <footer class="site-footer">
     <span class="mono" data-i18n="footer.rights">© 2026 DaniiKodit · сайты и боты под ключ</span>
-    <span class="mono footer-made" data-i18n="footer.made">сделано руками, без конструкторов</span>
+    <a class="mono" href="privacy.html" data-i18n="footer.privacy">политика конфиденциальности</a>
     <a class="mono" href="#top" data-i18n="footer.top">наверх ↑</a>
   </footer>
 
   <div class="scanlines" aria-hidden="true"></div>
 
-  <script src="js/main.js?v=8"></script>
+  <script src="js/main.js?v=9"></script>
 </body>
 </html>
