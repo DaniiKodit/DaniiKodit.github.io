@@ -659,13 +659,14 @@ function initStars() {
     img = ctx.createImageData(W, H);
 
     stars = [];
-    const n = Math.min(160, Math.round((W * H) / 260));
+    const n = Math.min(110, Math.round((W * H) / 380));
     for (let i = 0; i < n; i++) {
       stars.push({
-        x: (Math.random() * W) | 0,
-        y: (Math.random() * H) | 0,
+        x: 1 + ((Math.random() * (W - 2)) | 0),
+        y: 1 + ((Math.random() * (H - 2)) | 0),
         phase: Math.random() * 6.28,
-        tw: 0.5 + Math.random() * 1.5,   // скорость мерцания
+        tw: 0.4 + Math.random() * 1.1,   // скорость мерцания
+        big: Math.random() < 0.4,        // крупные умеют вспыхивать искрой
         accent: Math.random() < 0.06,    // редкие лаймовые звёзды
       });
     }
@@ -675,10 +676,22 @@ function initStars() {
   function render(now) {
     img.data.fill(0);
 
-    // звёзды мерцают: то тусклые, то яркие, то гаснут
+    // звезда разгорается: точка → ярче → пиксельная искра ✦ → гаснет
     for (const s of stars) {
       const b = Math.sin(now * 0.001 * s.tw + s.phase);
-      if (b > 0.1) put(s.x, s.y, b > 0.85 ? (s.accent ? C_ACC : C_INK) : C_DIM);
+      if (b <= 0.15) continue;
+      const head = s.accent ? C_ACC : C_INK;
+
+      if (s.big && b > 0.88) {
+        // вспышка крестиком, как рисуют звёзды в пиксель-арте
+        put(s.x, s.y, head);
+        put(s.x - 1, s.y, C_DIM);
+        put(s.x + 1, s.y, C_DIM);
+        put(s.x, s.y - 1, C_DIM);
+        put(s.x, s.y + 1, C_DIM);
+      } else {
+        put(s.x, s.y, b > 0.6 ? head : C_DIM);
+      }
     }
 
     ctx.putImageData(img, 0, 0);
