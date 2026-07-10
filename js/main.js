@@ -642,12 +642,12 @@ function initStars() {
   let W = 0, H = 0, img = null;
   let stars = [];              // мерцающее звёздное поле
 
-  function put(x, y, c) {
+  function put(x, y, c, a) {
     x |= 0; y |= 0;
     if (x < 0 || x >= W || y < 0 || y >= H) return;
     const i = (y * W + x) * 4;
     const d = img.data;
-    d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
+    d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = a;
   }
 
   function resize() {
@@ -665,7 +665,7 @@ function initStars() {
         x: 1 + ((Math.random() * (W - 2)) | 0),
         y: 1 + ((Math.random() * (H - 2)) | 0),
         phase: Math.random() * 6.28,
-        tw: 0.4 + Math.random() * 1.1,   // скорость мерцания
+        tw: 0.25 + Math.random() * 0.6,  // медленное мерцание
         accent: Math.random() < 0.06,    // редкие лаймовые звёзды
       });
     }
@@ -675,16 +675,20 @@ function initStars() {
   function render(now) {
     img.data.fill(0);
 
-    // звезда — пиксельная искра ✦: разгорается, вспыхивает и гаснет
+    // звезда — пиксельная искра ✦: все пять пикселей плавно
+    // разгораются и гаснут вместе (яркость через альфа-канал)
+    const TH = -0.15;            // видима больше половины цикла
     for (const s of stars) {
       const b = Math.sin(now * 0.001 * s.tw + s.phase);
-      if (b <= 0.2) continue;
-      const center = b > 0.7 ? (s.accent ? C_ACC : C_INK) : C_DIM;
-      put(s.x, s.y, center);
-      put(s.x - 1, s.y, C_DIM);
-      put(s.x + 1, s.y, C_DIM);
-      put(s.x, s.y - 1, C_DIM);
-      put(s.x, s.y + 1, C_DIM);
+      if (b <= TH) continue;
+      const v = (b - TH) / (1 - TH);   // плавная яркость 0..1
+      const head = s.accent ? C_ACC : C_INK;
+      const armA = 25 + 140 * v;       // лучи всегда чуть тусклее центра
+      put(s.x, s.y, head, 60 + 195 * v);
+      put(s.x - 1, s.y, head, armA);
+      put(s.x + 1, s.y, head, armA);
+      put(s.x, s.y - 1, head, armA);
+      put(s.x, s.y + 1, head, armA);
     }
 
     ctx.putImageData(img, 0, 0);
