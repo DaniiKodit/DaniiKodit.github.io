@@ -736,6 +736,11 @@ function initWorkCanvases() {
 /* ---------- появление при скролле ---------- */
 
 function initReveal() {
+  // страховка: без IntersectionObserver показываем всё сразу
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+    return;
+  }
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {

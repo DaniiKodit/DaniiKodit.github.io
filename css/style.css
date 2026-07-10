@@ -741,12 +741,14 @@ section { scroll-margin-top: 90px; }
 .site-footer a:hover { color: var(--accent); }
 
 /* ---------- появление при скролле ---------- */
-.reveal {
+/* скрываем контент только если JS работает (html.js ставит скрипт),
+   иначе без JS страница осталась бы пустой */
+html.js .reveal {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.reveal.visible {
+html.js .reveal.visible {
   opacity: 1;
   transform: none;
 }
