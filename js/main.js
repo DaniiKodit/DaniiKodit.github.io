@@ -631,102 +631,6 @@ function initPixelTicker() {
   schedule();
 }
 
-/* ---------- звёздное небо у формы ---------- */
-
-function initStars() {
-  const canvas = document.getElementById('pixel-stars');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  const CELL = 5;              // размер «пикселя» в css-px
-  let W = 0, H = 0, img = null;
-  let stars = [];              // мерцающее звёздное поле
-
-  function put(x, y, c, a) {
-    x |= 0; y |= 0;
-    if (x < 0 || x >= W || y < 0 || y >= H) return;
-    const i = (y * W + x) * 4;
-    const d = img.data;
-    d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = a;
-  }
-
-  function resize() {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    W = Math.max(1, Math.ceil(rect.width / CELL));
-    H = Math.max(1, Math.ceil(rect.height / CELL));
-    canvas.width = W;
-    canvas.height = H;
-    img = ctx.createImageData(W, H);
-
-    stars = [];
-    const n = Math.min(60, Math.round((W * H) / 700));
-    for (let i = 0; i < n; i++) {
-      stars.push({
-        x: 1 + ((Math.random() * (W - 2)) | 0),
-        y: 1 + ((Math.random() * (H - 2)) | 0),
-        phase: Math.random() * 6.28,
-        tw: 0.25 + Math.random() * 0.6,  // медленное мерцание
-        accent: Math.random() < 0.06,    // редкие лаймовые звёзды
-      });
-    }
-    render(performance.now());
-  }
-
-  function render(now) {
-    img.data.fill(0);
-
-    // звезда — пиксельная искра ✦: все пять пикселей плавно
-    // разгораются и гаснут вместе (яркость через альфа-канал)
-    const TH = -0.15;            // видима больше половины цикла
-    for (const s of stars) {
-      const b = Math.sin(now * 0.001 * s.tw + s.phase);
-      if (b <= TH) continue;
-      const v = (b - TH) / (1 - TH);   // плавная яркость 0..1
-      const head = s.accent ? C_ACC : C_INK;
-      const armA = 25 + 140 * v;       // лучи всегда чуть тусклее центра
-      put(s.x, s.y, head, 60 + 195 * v);
-      put(s.x - 1, s.y, head, armA);
-      put(s.x + 1, s.y, head, armA);
-      put(s.x, s.y - 1, head, armA);
-      put(s.x, s.y + 1, head, armA);
-    }
-
-    ctx.putImageData(img, 0, 0);
-  }
-
-  new ResizeObserver(resize).observe(canvas.parentElement);
-  resize();
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let sectionVisible = true;
-  let rafId = 0;
-  let last = 0;
-
-  function frame(now) {
-    rafId = 0;
-    if (now - last > 80) {
-      last = now;
-      render(now);
-    }
-    schedule();
-  }
-
-  function schedule() {
-    if (!reduceMotion && sectionVisible && !document.hidden && !rafId) {
-      rafId = requestAnimationFrame(frame);
-    }
-  }
-
-  new IntersectionObserver((entries) => {
-    sectionVisible = entries[0].isIntersecting;
-    schedule();
-  }).observe(canvas.parentElement);
-
-  document.addEventListener('visibilitychange', schedule);
-
-  schedule();
-}
-
 /* ---------- статичные дизеринг-обложки проектов ---------- */
 
 function drawWorkCanvas(canvas) {
@@ -943,7 +847,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroDither();
   initPixelTicker();
   initWorkCanvases();
-  initStars();
   initReveal();
   initBurger();
   initForm();
